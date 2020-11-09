@@ -2,6 +2,7 @@
 .container-fluid
   .h2
     .my-3 總隊數：{{ data.length }}
+    a(href="/about") 賽程
 
   div(v-for="(item, key) in data", :key="key")
     h3 {{ item.team_name }}
@@ -24,10 +25,10 @@ export default class Home extends Vue {
   protected data: any[] = []
 
   protected created () {
-    this.getKartData();
+    this.getKartData()
   }
 
-  protected getKartData() {
+  protected getKartData () {
     Axios.get(
       'https://cors-anywhere.herokuapp.com/http://dc-cs-xmas-frontend-prod-f271a7c387ea79e8.elb.ap-northeast-1.amazonaws.com/api/teams'
     ).then((res) => {
